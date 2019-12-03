@@ -1,0 +1,13 @@
+sudo: required
+language: go
+go:
+  - 1.7
+  - 1.8
+  - release
+  - tip
+before_install:
+  - sudo modprobe vcan
+  - sudo ip link add type vcan
+  - sudo ip link set up vcan0
+script:
+  - go test -v ./...
